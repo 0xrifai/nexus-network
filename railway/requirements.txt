@@ -1,0 +1,2 @@
+# Tidak ada dependencies Python tambahan yang diperlukan
+# File ini ada untuk kompatibilitas dengan beberapa platform

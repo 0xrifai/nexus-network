@@ -1,0 +1,11 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "always"
+startCommand = "python3 setup_nexus.py"
+
+[variables]
+NODE_ENV = "production"

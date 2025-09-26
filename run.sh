@@ -74,5 +74,34 @@ echo "Threads: $MAX_THREADS"
 echo "Difficulty: $DIFFICULTY"
 echo ""
 
+# Function untuk keep alive logging
+start_keep_alive() {
+    while true; do
+        echo "keep alive $(date)" >> keep_alive.log
+        sleep 300   # setiap 5 menit
+    done
+}
+
+# Jalankan keep alive di background
+echo "Starting keep alive logging..."
+start_keep_alive &
+KEEP_ALIVE_PID=$!
+
+# Function untuk cleanup ketika script dihentikan
+cleanup() {
+    echo ""
+    echo "Stopping keep alive logging..."
+    kill $KEEP_ALIVE_PID 2>/dev/null
+    echo "Keep alive stopped."
+    exit 0
+}
+
+# Set trap untuk cleanup ketika script dihentikan
+trap cleanup SIGINT SIGTERM
+
+echo "Keep alive logging started (PID: $KEEP_ALIVE_PID)"
+echo "Log file: keep_alive.log"
+echo ""
+
 # Start the network
 nexus-network start --node-id $NODE_ID --max-threads $MAX_THREADS --max-difficulty $DIFFICULTY

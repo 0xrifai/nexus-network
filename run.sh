@@ -14,22 +14,29 @@ read -p "Masukkan jumlah threads (contoh: 24): " MAX_THREADS
 
 # Difficulty selection
 echo ""
-echo "Pilih tingkat kesulitan:"
-echo "1. extra_large"
-echo "2. extra_large_2" 
-echo "3. extra_large_3"
-echo "4. extra_large_4"
-echo "5. extra_large_5"
-echo ""
-read -p "Pilih nomor (1-5): " DIFFICULTY_CHOICE
+echo "Pilih tingkat kesulitan (dari kecil ke besar):"
+echo "1. small"
+echo "2. small_medium"
+echo "3. medium"
+echo "4. large"
+echo "5. extra_large"
+echo "6. extra_large_2" 
+echo "7. extra_large_3"
+echo "8. extra_large_4"
+echo "9. extra_large_5"
+read -p "Pilih nomor (1-9): " DIFFICULTY_CHOICE
 
 case $DIFFICULTY_CHOICE in
-    1) DIFFICULTY="extra_large";;
-    2) DIFFICULTY="extra_large_2";;
-    3) DIFFICULTY="extra_large_3";;
-    4) DIFFICULTY="extra_large_4";;
-    5) DIFFICULTY="extra_large_5";;
-    *) echo "Pilihan tidak valid, menggunakan extra_large_5"; DIFFICULTY="extra_large_5";;
+    1) DIFFICULTY="small";;
+    2) DIFFICULTY="small_medium";;
+    3) DIFFICULTY="medium";;
+    4) DIFFICULTY="large";;
+    5) DIFFICULTY="extra_large";;
+    6) DIFFICULTY="extra_large_2";;
+    7) DIFFICULTY="extra_large_3";;
+    8) DIFFICULTY="extra_large_4";;
+    9) DIFFICULTY="extra_large_5";;
+    *) echo "Pilihan tidak valid, menggunakan small"; DIFFICULTY="small";;
 esac
 
 echo ""
@@ -37,14 +44,6 @@ echo "=== Konfigurasi yang dipilih ==="
 echo "Node ID: $NODE_ID"
 echo "Threads: $MAX_THREADS"
 echo "Difficulty: $DIFFICULTY"
-echo ""
-read -p "Lanjutkan instalasi? (y/n): " CONFIRM
-
-if [[ $CONFIRM != "y" && $CONFIRM != "Y" ]]; then
-    echo "Instalasi dibatalkan."
-    exit 1
-fi
-
 echo ""
 echo "=== Memulai Instalasi ==="
 
